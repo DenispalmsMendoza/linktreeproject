@@ -1,0 +1,264 @@
+:root {
+  --primary-color: #3495FE;
+  --secondary-color: #D9D9D9;
+  --background-color: #ffffff;
+  --gradient: radial-gradient(circle, var(--primary-color), var(--secondary-color));
+  --card-background: #ffffffb7; /* Fondo transparente */
+  --text-color: #333;
+  --text-color2: #5C5858;
+  --font-family: 'Poppins', sans-serif;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  padding-left: 20PX;
+  padding-right: 20px;
+  min-height: 100vh;
+  max-height: 667px;
+  font-family: var(--font-family);
+  background: var(--gradient);
+  background-size: 150% 150%; /* Más grande para animar */
+  animation: breathing-gradient 6s infinite; /* Efecto de respiración */
+  color: var(--text-color);
+  
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+
+  html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Desactiva el scroll */
+    box-sizing: inherit;
+}
+}
+
+/* Animación para el gradient que respira */
+@keyframes breathing-gradient {
+  0%, 100% {
+    background-size: 150% 150%; /* Estado inicial y final */
+    background-position: center center; /* Centrado */
+  }
+  50% {
+    background-size: 200% 200%; /* Expansión máxima */
+    background-position: center center; /* Mantiene el centro */
+  }
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  background-color: #ffffffdb;
+ border: 0,5px solid #ffffff00;
+  border-radius: 20px;
+  overflow: hidden;
+  padding: 1.5rem;
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.);
+}
+
+.profile {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.profile-image-container {
+  width: 160px;
+  height: 200px; /* Altura mayor que la base */
+  background-color: var(--primary-color);
+  position: relative;
+  z-index: 2;
+  border-radius: 20px;
+  overflow: hidden;
+  margin: 0 auto;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transition: transform 0.8s ease;
+}
+.profile-background {
+  width: 180px;
+  height: 220px;
+  background: var(--gradient);
+  background-size: 150% 150%;
+  animation: breathing-gradient 6s infinite;
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 20px;
+  z-index: 1;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.profile-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.2s ease;
+}
+
+.container:hover .profile-image-container {
+  transform: scale(1.05);
+}
+
+
+.card-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  text-align: center;
+  transition: transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* Efecto de respiración lento en hover */
+.card:hover .card-title {
+  animation: slow-breathing 6s infinite; /* Efecto de respiración lenta */
+}
+
+/* Definición de la animación */
+@keyframes slow-breathing {
+  0%, 100% {
+    transform: scale(1); /* Tamaño normal */
+    text-shadow: none; /* Sin sombra */
+  }
+  50% {
+    transform: scale(1.1); /* Aumenta ligeramente */
+    text-shadow: 3px 3px 7px rgba(52, 149, 254, 0.5); /* Sombra azul */
+  }
+}
+
+
+.cards-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  /* margin-bottom: 1.5rem; */
+}
+
+.card {
+  flex: 1 1 calc(45% - 1rem); /* Ocupa el 45% del contenedor */
+  background-color: var(--card-background); /* Fondo transparente */
+  padding: 10px; /* Padding interno */
+  border-radius: 15px; /* Bordes redondeados */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+  text-align: center; /* Centrado horizontal */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centrado horizontal */
+  justify-content: flex-start; /* Posiciona el contenido en la parte superior */
+  gap: 10px; /* Espaciado entre los elementos internos */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-subtext {
+  font-size: 0.85rem;
+  color: gray;
+  text-align: center;
+}
+
+.card-subtext s {
+  color: #a1a1a1;
+  text-decoration: line-through;
+  font-style: italic;
+}
+
+.skills-card {
+  margin: 1rem 0;
+  padding: 1.5rem;
+  background-color: #ffffff94;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+  gap: 1.5rem;
+  justify-items: center;
+  align-items: center;
+}
+
+.skill-icon {
+  width: 50px;
+  height: 50px;
+  transition: transform 0.2s ease;
+}
+
+.skill-icon:hover {
+  transform: scale(1.2);
+}
+
+.link-card {
+  background: none;
+  color: var(--text-color2);
+  border: 2px solid #3496fe98;
+  padding: 1rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  text-align: center;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.link-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  background-color: var(--primary-color);
+  color: var(--background-color);
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.social-icon {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-icon:hover {
+  transform: scale(1.2);
+  color: var(--secondary-color);
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+  .profile-image {
+    width: 80px;
+    height: 80px;
+  }
+  .profile-name {
+    font-size: 1.3rem;
+  }
+  .card {
+    flex: 1 1 100%;
+  }
+  .skills-card {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .skill-icon {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-name {
+    font-size: 1.1rem;
+  }
+  .skills-card {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .skill-icon {
+    width: 35px;
+    height: 35px;
+  }
+}
